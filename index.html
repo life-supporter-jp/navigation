@@ -7,8 +7,9 @@
     <style>
         :root {
             --navy: #1a2a6c;
-            --gold: #f1c40f;
-            --soft-white: #f8f9fa;
+            --gold: #d4af37;
+            --soft-white: #f4f7f6;
+            --text-dark: #333;
         }
         body, html {
             margin: 0; padding: 0; height: 100%; overflow: hidden;
@@ -25,55 +26,54 @@
             justify-content: center; align-items: center;
             text-align: center; color: white; padding: 20px;
             box-sizing: border-box; position: relative;
+            background-size: cover; background-position: center;
+            background-repeat: no-repeat;
         }
 
-        /* 背景グラデーションの設定（画像を使わずに表現） */
-        .s-top { background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d); }
-        .s1 { background: linear-gradient(135deg, #2c3e50, #4ca1af); } /* 知識 */
-        .s2 { background: linear-gradient(135deg, #11998e, #38ef7d); } /* 健康 */
-        .s3 { background: linear-gradient(135deg, #8e44ad, #c33764); } /* 整理 */
-        .s4 { background: linear-gradient(135deg, #ff9966, #ff5e62); } /* 運勢 */
-        .s5 { background: linear-gradient(135deg, #2193b0, #6dd5ed); } /* 脳トレ */
-        .s6 { background: var(--soft-white); color: #333; } /* 保存 */
+        /* 背景画像の設定（確実に表示されるリンクへ修正） */
+        .s-top { background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80'); }
+        .s1 { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80'); }
+        .s2 { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1200&q=80'); }
+        /* Slide 3 (マイライフチェック 60) の画像を確実なものに */
+        .s3 { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=1200&q=80'); }
+        .s4 { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1511105612665-4dc120066a71?auto=format&fit=crop&w=1200&q=80'); }
+        .s5 { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1546776310-eef45dd6d63c?auto=format&fit=crop&w=1200&q=80'); }
+        .s6 { background-color: var(--soft-white); color: var(--text-dark); }
 
-        .content {
-            max-width: 600px; padding: 40px; border-radius: 30px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-        }
-        .s6 .content { background: white; color: #333; border: 1px solid #ddd; }
+        .content { max-width: 800px; z-index: 2; background: rgba(0,0,0,0.2); padding: 30px; border-radius: 20px; backdrop-filter: blur(5px); }
+        .s6 .content { background: transparent; color: #333; backdrop-filter: none; width: 90%; }
 
-        .icon { font-size: 5rem; margin-bottom: 20px; display: block; }
-        h1 { font-size: 2.2rem; color: #fff; margin-bottom: 10px; }
-        h2 { font-size: 1.8rem; margin-bottom: 15px; color: var(--gold); }
-        p { font-size: 1rem; margin-bottom: 30px; line-height: 1.6; opacity: 0.9; }
+        h1 { font-size: 2.5rem; color: var(--gold); margin-bottom: 20px; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
+        h2 { font-size: 2rem; margin-bottom: 15px; color: #fff; }
+        p { font-size: 1.1rem; margin-bottom: 30px; line-height: 1.6; }
         
         .btn {
-            background: white; color: var(--navy); padding: 12px 35px;
+            background: var(--gold); color: white; padding: 15px 40px;
             text-decoration: none; border-radius: 50px; font-weight: bold;
-            font-size: 1rem; display: inline-block; transition: 0.3s;
+            font-size: 1.1rem; display: inline-block; transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
-        .btn:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        .btn:hover { transform: scale(1.05); background: #b8962d; }
 
         .nav-arrow {
             position: absolute; top: 50%; transform: translateY(-50%);
             background: rgba(255,255,255,0.2); border: none; color: white;
-            width: 50px; height: 50px; cursor: pointer; border-radius: 50%;
-            z-index: 10; font-size: 1.2rem; display: flex; align-items: center; justify-content: center;
+            padding: 20px; cursor: pointer; border-radius: 50%; font-size: 1.5rem;
+            z-index: 10; transition: 0.3s; display: flex; align-items: center; justify-content: center;
+            width: 60px; height: 60px;
         }
-        .prev { left: 15px; }
-        .next { right: 15px; }
+        .nav-arrow:hover { background: rgba(255,255,255,0.5); }
+        .prev { left: 20px; }
+        .next { right: 20px; }
 
         .storage-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px; width: 100%; margin-top: 15px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px; width: 100%; margin-top: 20px;
         }
-        .data-box { background: #f0f2f5; padding: 12px; border-radius: 12px; text-align: left; }
-        .data-box label { display: block; margin-bottom: 5px; font-weight: bold; color: var(--navy); font-size: 0.8rem; }
-        textarea { width: 100%; border: 1px solid #ccc; border-radius: 8px; padding: 8px; box-sizing: border-box; font-size: 0.9rem; resize: none; }
-        .save-btn { background: #27ae60; border: none; color: white; padding: 12px 40px; border-radius: 50px; cursor: pointer; margin-top: 15px; font-weight: bold; }
+        .data-box { background: white; padding: 12px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-align: left; }
+        .data-box label { display: block; margin-bottom: 5px; font-weight: bold; color: var(--navy); font-size: 0.9rem; }
+        textarea { width: 100%; border: 1px solid #ddd; border-radius: 5px; padding: 8px; box-sizing: border-box; font-size: 1rem; resize: none; }
+        .save-btn { background: #27ae60; border: none; color: white; padding: 12px 50px; border-radius: 50px; cursor: pointer; margin-top: 20px; font-weight: bold; font-size: 1rem; }
     </style>
 </head>
 <body>
@@ -85,29 +85,28 @@
     <!-- TOP -->
     <div class="slide s-top">
         <div class="content">
-            <span class="icon">🗺️</span>
             <h1>ライフサポート・ナビ</h1>
-            <p>安心で豊かな明日へ。スライドをめくって、あなたにぴったりのツールを見つけましょう。</p>
-            <p style="font-size: 0.8rem;">【右の矢印で進む】</p>
+            <p>これからの人生をより豊かに、より安心して過ごすために。<br>5つのツールをスライドでご紹介します。</p>
+            <p style="font-size: 0.9rem; opacity: 0.8;">【右の矢印で進む】</p>
         </div>
     </div>
 
     <!-- Slide 1 -->
     <div class="slide s1">
         <div class="content">
-            <span class="icon">🔍</span>
+            <span style="color:var(--gold); font-weight: bold;">01 | Knowledge</span>
             <h2>150からのヒント</h2>
-            <p>相続、医療、介護などの不安をスッキリ解消。キーワード検索で必要な知識がすぐに見つかります。</p>
-            <a href="https://life-supporter-jp.github.io/kiso150/" target="_blank" class="btn">ツールを開く</a>
+            <p>相続、医療、介護、葬儀、お墓…。<br>専門知識をキーワードで簡単検索。不安を安心に変える知恵袋です。</p>
+            <a href="https://life-supporter-jp.github.io/kiso150/" target="_blank" class="btn">ページを開く</a>
         </div>
     </div>
 
     <!-- Slide 2 -->
     <div class="slide s2">
         <div class="content">
-            <span class="icon">🏃</span>
+            <span style="color:var(--gold); font-weight: bold;">02 | Exercise</span>
             <h2>AI健康体操</h2>
-            <p>AIのガイドで毎日を元気に！楽しい体操とゲームで、心身ともにリフレッシュしましょう。</p>
+            <p>AIがあなたのパーソナルトレーナーに。<br>毎日のリフレッシュに最適な体操とゲームで、心も体も元気に保ちましょう。</p>
             <a href="https://life-supporter-jp.github.io/taisou/" target="_blank" class="btn">体操を始める</a>
         </div>
     </div>
@@ -115,9 +114,9 @@
     <!-- Slide 3 -->
     <div class="slide s3">
         <div class="content">
-            <span class="icon">📝</span>
+            <span style="color:var(--gold); font-weight: bold;">03 | Life Check</span>
             <h2>マイライフチェック60</h2>
-            <p>お金からデジタル遺産まで、全6章のチェック項目。自分と家族のための大切な情報を美しく整理します。</p>
+            <p>お金、医療、デジタル遺産など全6章。<br>60の項目と丁寧な解説で、あなたの人生の大切な情報を整理・記録します。</p>
             <a href="https://life-supporter-jp.github.io/life-check/" target="_blank" class="btn">チェックを開始</a>
         </div>
     </div>
@@ -125,9 +124,9 @@
     <!-- Slide 4 -->
     <div class="slide s4">
         <div class="content">
-            <span class="icon">🚪</span>
+            <span style="color:var(--gold); font-weight: bold;">04 | Fortune</span>
             <h2>運勢鑑定</h2>
-            <p>毎日のワクワクをここから。3つの扉から1つを選んで、今日の運勢を占ってみましょう。</p>
+            <p>毎日をちょっと楽しく。3つの扉から直感で1つを選び、<br>今日の運勢を占ってみましょう。良い一日へのヒントがここに。</p>
             <a href="https://life-supporter-jp.github.io/unsei/" target="_blank" class="btn">運勢を占う</a>
         </div>
     </div>
@@ -135,9 +134,9 @@
     <!-- Slide 5 -->
     <div class="slide s5">
         <div class="content">
-            <span class="icon">🧩</span>
+            <span style="color:var(--gold); font-weight: bold;">05 | Brain Training</span>
             <h2>ひらがな並び替え</h2>
-            <p>ゆっくり、じっくり。脳を心地よく刺激する言葉のパズル。楽しみながら脳トレを習慣に。</p>
+            <p>焦らず、ゆっくり。脳に心地よい刺激を。<br>楽しみながら言葉を完成させる、シンプルで奥の深い脳トレゲームです。</p>
             <a href="https://life-supporter-jp.github.io/narabikae/" target="_blank" class="btn">ゲームで遊ぶ</a>
         </div>
     </div>
@@ -145,12 +144,11 @@
     <!-- Slide 6 (Memo Area) -->
     <div class="slide s6">
         <div class="content">
-            <span class="icon" style="font-size: 3rem;">💾</span>
-            <h2 style="color:var(--navy); margin-bottom: 5px;">個人用メモ保存</h2>
-            <p style="margin-bottom: 10px; color: #666;">大切な情報を番号順に記録。このブラウザにのみ保存されます。</p>
+            <h2 style="color:var(--navy); margin-bottom: 5px;">06 | 個人用メモ保存</h2>
+            <p style="margin-bottom: 10px;">忘れたくないことを番号順に記録できます。ブラウザに保存されます。</p>
             <div class="storage-grid" id="storage-grid"></div>
             <button class="save-btn" onclick="saveData()">データを保存</button>
-            <p id="msg" style="color:#27ae60; font-size:0.8rem; margin-top:5px; height:1em;"></p>
+            <p id="msg" style="color:#27ae60; font-size:0.9rem; margin-top:5px; height:1.2em;"></p>
         </div>
     </div>
 </div>
@@ -165,32 +163,34 @@
         slider.style.transform = `translateX(-${currentSlide * 100}vw)`;
     }
 
+    // データ保存機能
     const grid = document.getElementById('storage-grid');
     for (let i = 1; i <= 6; i++) {
         grid.innerHTML += `
             <div class="data-box">
-                <label>メモ #${i}</label>
-                <textarea id="memo-${i}" rows="2"></textarea>
+                <label>メモ番号 #${i}</label>
+                <textarea id="memo-${i}" rows="2" placeholder="内容を記入..."></textarea>
             </div>
         `;
     }
 
     window.onload = () => {
         for (let i = 1; i <= 6; i++) {
-            const val = localStorage.getItem('ls_slide_data_v3_' + i);
+            const val = localStorage.getItem('ls_slide_data_v2_' + i);
             if (val) document.getElementById('memo-' + i).value = val;
         }
     };
 
     function saveData() {
         for (let i = 1; i <= 6; i++) {
-            localStorage.setItem('ls_slide_data_v3_' + i, document.getElementById('memo-' + i).value);
+            localStorage.setItem('ls_slide_data_v2_' + i, document.getElementById('memo-' + i).value);
         }
         const m = document.getElementById('msg');
-        m.innerText = "保存しました";
+        m.innerText = "ブラウザに保存されました";
         setTimeout(() => m.innerText = "", 2000);
     }
 
+    // キーボード操作対応
     document.addEventListener('keydown', (e) => {
         if (e.key === "ArrowRight") moveSlide(1);
         if (e.key === "ArrowLeft") moveSlide(-1);
