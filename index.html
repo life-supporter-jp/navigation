@@ -9,16 +9,15 @@
             --navy: #1a2a6c;
             --gold: #d4af37;
             --soft-white: #f4f7f6;
-            --text-dark: #333;
         }
         body, html {
             margin: 0; padding: 0; height: 100%; overflow: hidden;
-            font-family: 'Helvetica Neue', Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
-            background: #000;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: var(--navy);
         }
         .slides-container {
             display: flex; width: 700%; height: 100%;
-            transition: transform 0.6s cubic-bezier(0.45, 0, 0.55, 1);
+            transition: transform 0.5s ease-in-out;
         }
         .slide {
             width: 100vw; height: 100vh;
@@ -27,53 +26,46 @@
             text-align: center; color: white; padding: 20px;
             box-sizing: border-box; position: relative;
             background-size: cover; background-position: center;
-            background-repeat: no-repeat;
         }
+        /* 各スライドの背景 */
+        .s-top { background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1516733725897-1aa73b87c8e8?auto=format&fit=crop&w=1000&q=80'); }
+        .s1 { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1000&q=80'); }
+        .s2 { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1000&q=80'); }
+        .s3 { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=1000&q=80'); }
+        .s4 { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1509248961158-e54f6934749c?auto=format&fit=crop&w=1000&q=80'); }
+        .s5 { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1516533074963-34cc37482811?auto=format&fit=crop&w=1000&q=80'); }
+        .s6 { background: var(--soft-white); color: var(--text-dark); }
 
-        /* 背景画像の設定（確実に表示されるリンクへ修正） */
-        .s-top { background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80'); }
-        .s1 { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80'); }
-        .s2 { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1200&q=80'); }
-        /* Slide 3 (マイライフチェック 60) の画像を確実なものに */
-        .s3 { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=1200&q=80'); }
-        .s4 { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1511105612665-4dc120066a71?auto=format&fit=crop&w=1200&q=80'); }
-        .s5 { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1546776310-eef45dd6d63c?auto=format&fit=crop&w=1200&q=80'); }
-        .s6 { background-color: var(--soft-white); color: var(--text-dark); }
-
-        .content { max-width: 800px; z-index: 2; background: rgba(0,0,0,0.2); padding: 30px; border-radius: 20px; backdrop-filter: blur(5px); }
-        .s6 .content { background: transparent; color: #333; backdrop-filter: none; width: 90%; }
-
-        h1 { font-size: 2.5rem; color: var(--gold); margin-bottom: 20px; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
-        h2 { font-size: 2rem; margin-bottom: 15px; color: #fff; }
-        p { font-size: 1.1rem; margin-bottom: 30px; line-height: 1.6; }
+        .content { max-width: 800px; z-index: 2; }
+        h1 { font-size: 2.5rem; color: var(--gold); margin-bottom: 20px; }
+        p { font-size: 1.2rem; margin-bottom: 30px; line-height: 1.8; }
         
         .btn {
             background: var(--gold); color: white; padding: 15px 40px;
             text-decoration: none; border-radius: 50px; font-weight: bold;
             font-size: 1.1rem; display: inline-block; transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
         .btn:hover { transform: scale(1.05); background: #b8962d; }
 
+        /* ナビゲーション矢印 */
         .nav-arrow {
             position: absolute; top: 50%; transform: translateY(-50%);
             background: rgba(255,255,255,0.2); border: none; color: white;
             padding: 20px; cursor: pointer; border-radius: 50%; font-size: 1.5rem;
-            z-index: 10; transition: 0.3s; display: flex; align-items: center; justify-content: center;
-            width: 60px; height: 60px;
+            z-index: 10; transition: 0.3s;
         }
-        .nav-arrow:hover { background: rgba(255,255,255,0.5); }
+        .nav-arrow:hover { background: rgba(255,255,255,0.4); }
         .prev { left: 20px; }
         .next { right: 20px; }
 
+        /* 保存エリア用スタイル */
         .storage-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 15px; width: 100%; margin-top: 20px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px; width: 90%; color: #333; margin: 0 auto;
         }
-        .data-box { background: white; padding: 12px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-align: left; }
-        .data-box label { display: block; margin-bottom: 5px; font-weight: bold; color: var(--navy); font-size: 0.9rem; }
-        textarea { width: 100%; border: 1px solid #ddd; border-radius: 5px; padding: 8px; box-sizing: border-box; font-size: 1rem; resize: none; }
-        .save-btn { background: #27ae60; border: none; color: white; padding: 12px 50px; border-radius: 50px; cursor: pointer; margin-top: 20px; font-weight: bold; font-size: 1rem; }
+        .data-box { background: white; padding: 15px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        textarea { width: 100%; border: 1px solid #ddd; border-radius: 5px; padding: 10px; box-sizing: border-box; font-size: 1rem; }
+        .save-btn { background: #27ae60; border: none; color: white; padding: 15px 50px; border-radius: 50px; cursor: pointer; margin-top: 20px; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -86,27 +78,27 @@
     <div class="slide s-top">
         <div class="content">
             <h1>ライフサポート・ナビ</h1>
-            <p>これからの人生をより豊かに、より安心して過ごすために。<br>5つのツールをスライドでご紹介します。</p>
-            <p style="font-size: 0.9rem; opacity: 0.8;">【右の矢印で進む】</p>
+            <p>安心と楽しみを、スライドをめくって見つけましょう。</p>
+            <p style="font-size: 0.9rem; opacity: 0.7;">右の矢印をクリック、または画面をスワイプしてください</p>
         </div>
     </div>
 
     <!-- Slide 1 -->
     <div class="slide s1">
         <div class="content">
-            <span style="color:var(--gold); font-weight: bold;">01 | Knowledge</span>
+            <span style="color:var(--gold)">01 | Knowledge</span>
             <h2>150からのヒント</h2>
-            <p>相続、医療、介護、葬儀、お墓…。<br>専門知識をキーワードで簡単検索。不安を安心に変える知恵袋です。</p>
-            <a href="https://life-supporter-jp.github.io/kiso150/" target="_blank" class="btn">ページを開く</a>
+            <p>これからが不安という人に。相続、医療、介護、葬儀など、気になるキーワードで検索。専門知識をあなたの手に。</p>
+            <a href="https://life-supporter-jp.github.io/kiso150/" target="_blank" class="btn">ツールを開く</a>
         </div>
     </div>
 
     <!-- Slide 2 -->
     <div class="slide s2">
         <div class="content">
-            <span style="color:var(--gold); font-weight: bold;">02 | Exercise</span>
+            <span style="color:var(--gold)">02 | Exercise</span>
             <h2>AI健康体操</h2>
-            <p>AIがあなたのパーソナルトレーナーに。<br>毎日のリフレッシュに最適な体操とゲームで、心も体も元気に保ちましょう。</p>
+            <p>AIの元気な声に合わせてリフレッシュ！一人でも大勢でも、時間設定して無理なく続けられる運動習慣を。</p>
             <a href="https://life-supporter-jp.github.io/taisou/" target="_blank" class="btn">体操を始める</a>
         </div>
     </div>
@@ -114,9 +106,9 @@
     <!-- Slide 3 -->
     <div class="slide s3">
         <div class="content">
-            <span style="color:var(--gold); font-weight: bold;">03 | Life Check</span>
+            <span style="color:var(--gold)">03 | Life Check</span>
             <h2>マイライフチェック60</h2>
-            <p>お金、医療、デジタル遺産など全6章。<br>60の項目と丁寧な解説で、あなたの人生の大切な情報を整理・記録します。</p>
+            <p>お金、医療、デジタル遺産。全6章の項目を埋めるだけで、あなたの人生が美しく整理されます。解説文付き。</p>
             <a href="https://life-supporter-jp.github.io/life-check/" target="_blank" class="btn">チェックを開始</a>
         </div>
     </div>
@@ -124,31 +116,31 @@
     <!-- Slide 4 -->
     <div class="slide s4">
         <div class="content">
-            <span style="color:var(--gold); font-weight: bold;">04 | Fortune</span>
+            <span style="color:var(--gold)">04 | Fortune</span>
             <h2>運勢鑑定</h2>
-            <p>毎日をちょっと楽しく。3つの扉から直感で1つを選び、<br>今日の運勢を占ってみましょう。良い一日へのヒントがここに。</p>
-            <a href="https://life-supporter-jp.github.io/unsei/" target="_blank" class="btn">運勢を占う</a>
+            <p>今日はどんな日になるでしょう？3つの扉から1つを選んで、前向きな一日をスタートしましょう。</p>
+            <a href="https://life-supporter-jp.github.io/unsei/" target="_blank" class="btn">扉を選ぶ</a>
         </div>
     </div>
 
     <!-- Slide 5 -->
     <div class="slide s5">
         <div class="content">
-            <span style="color:var(--gold); font-weight: bold;">05 | Brain Training</span>
+            <span style="color:var(--gold)">05 | Brain Training</span>
             <h2>ひらがな並び替え</h2>
-            <p>焦らず、ゆっくり。脳に心地よい刺激を。<br>楽しみながら言葉を完成させる、シンプルで奥の深い脳トレゲームです。</p>
-            <a href="https://life-supporter-jp.github.io/narabikae/" target="_blank" class="btn">ゲームで遊ぶ</a>
+            <p>制限時間はありません。ゆっくりと文字を組み替えて脳を活性化。楽しみながら考える時間をお届けします。</p>
+            <a href="https://life-supporter-jp.github.io/narabikae/" target="_blank" class="btn">パズルに挑戦</a>
         </div>
     </div>
 
     <!-- Slide 6 (Memo Area) -->
     <div class="slide s6">
-        <div class="content">
-            <h2 style="color:var(--navy); margin-bottom: 5px;">06 | 個人用メモ保存</h2>
-            <p style="margin-bottom: 10px;">忘れたくないことを番号順に記録できます。ブラウザに保存されます。</p>
+        <div class="content" style="color:#333">
+            <h2 style="color:var(--navy)">06 | マイライフ・データ保存</h2>
+            <p>忘れたくないメモを番号順に保存できます（ブラウザに自動保存されます）。</p>
             <div class="storage-grid" id="storage-grid"></div>
             <button class="save-btn" onclick="saveData()">データを保存</button>
-            <p id="msg" style="color:#27ae60; font-size:0.9rem; margin-top:5px; height:1.2em;"></p>
+            <p id="msg" style="color:#27ae60; font-size:0.9rem; margin-top:10px; height:1.2em;"></p>
         </div>
     </div>
 </div>
@@ -168,33 +160,27 @@
     for (let i = 1; i <= 6; i++) {
         grid.innerHTML += `
             <div class="data-box">
-                <label>メモ番号 #${i}</label>
-                <textarea id="memo-${i}" rows="2" placeholder="内容を記入..."></textarea>
+                <label style="display:block; margin-bottom:5px; font-weight:bold;">データ #${i}</label>
+                <textarea id="memo-${i}" rows="2"></textarea>
             </div>
         `;
     }
 
     window.onload = () => {
         for (let i = 1; i <= 6; i++) {
-            const val = localStorage.getItem('ls_slide_data_v2_' + i);
+            const val = localStorage.getItem('ls_slide_data_' + i);
             if (val) document.getElementById('memo-' + i).value = val;
         }
     };
 
     function saveData() {
         for (let i = 1; i <= 6; i++) {
-            localStorage.setItem('ls_slide_data_v2_' + i, document.getElementById('memo-' + i).value);
+            localStorage.setItem('ls_slide_data_' + i, document.getElementById('memo-' + i).value);
         }
         const m = document.getElementById('msg');
-        m.innerText = "ブラウザに保存されました";
+        m.innerText = "保存しました！";
         setTimeout(() => m.innerText = "", 2000);
     }
-
-    // キーボード操作対応
-    document.addEventListener('keydown', (e) => {
-        if (e.key === "ArrowRight") moveSlide(1);
-        if (e.key === "ArrowLeft") moveSlide(-1);
-    });
 </script>
 
 </body>
